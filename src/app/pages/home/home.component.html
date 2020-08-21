@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div *ngIf="bogotaCurrentWeather" class="weather-section p-4 p-md-5">
+        <div class="float-weather">
+            <div class="state">
+                <img
+                    [src]="'http://openweathermap.org/img/wn/' + (bogotaCurrentWeather && bogotaCurrentWeather.icon) + '.png'">
+                <span>{{bogotaCurrentWeather && bogotaCurrentWeather.type}}</span>
+            </div>
+            <div class="quantity">
+                <span class="degrees">{{bogotaCurrentWeather && bogotaCurrentWeather.temp}}</span>
+                <span class="symbol">&#8451;</span>
+            </div>
+        </div>
+
+        <div class="main-banner">
+            <div class="city">
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{{bogotaCurrentWeather && bogotaCurrentWeather.name}}</span>
+                </div>
+                <div class="draw">
+                    <app-colombia></app-colombia>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content row mx-0">
+            <div *ngIf="bogotaForecast" class="section col-12 col-lg-6 col-xl-4">
+                <span class="title">
+                    <b>{{bogotaForecast.daysQuantity}} Times</b> Forecast
+                </span>
+                <div class="bogota-forecast">
+                    <div *ngFor="let item of bogotaForecast.list" class="item">
+                        <div class="icon">
+                            <img [src]="'http://openweathermap.org/img/wn/' + (item.icon) + '.png'">
+                        </div>
+                        <div class="day">
+                            <span>{{item.date}}</span>
+                            <span>{{item.type}}</span>
+                        </div>
+                        <div class="temp">
+                            {{item.temp_max | number:'1.0-0'}}&#176; / {{item.temp_min | number:'1.0-0'}}&#176;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section col-12 col-lg-6 col-xl-4 mt-4 mt-lg-0 px-0 px-md-2">
+                <div class="title d-flex justify-content-between align-items-center">
+                    <span><b>Places to</b> visit</span>
+                    <div class="reviewers">
+                        <span>+ Top Reviewers</span>
+                        <div class="d-flex">
+                            <div class="img">
+                                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                                    class="img-fit">
+                            </div>
+                            <div class="img">
+                                <img src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg"
+                                    class="img-fit">
+                            </div>
+                            <div class="img">
+                                <img src="https://cdn.fastly.picmonkey.com/contentful/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=800&q=70"
+                                    class="img-fit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4 mx-0">
+                    <div class="singapore col-12 col-md-6">
+                        <img src="https://aibel.com/assets/images/Locations/_582x777_crop_center-center_none/Singapore-city.jpg" class="img-fit border-radius-40">
+                        <div class="point">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Singapore
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 row mx-0 mt-3 mt-md-0">
+                        <div class="col-12 museum px-0 singapore">
+                            <img src="https://cdn.atrapalo.com/common/photo/event/2/8/9/123/394426/vertic_880_0.jpg" class="img-fit border-radius-40">
+                            <div class="point">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Art Science Museum
+                            </div>
+                        </div>
+                        <div class="col-12 px-0 mt-3 singapore">
+                            <img src="https://worldtoptop.com/wp-content/uploads/2011/05/fountain_of_wealth_suntec_2.jpg" class="img-fit border-radius-40">
+                            <div class="point">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Fountain of wealth
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="parisForecast" class="section col-12 col-lg-6 col-xl-4 france mt-4 mt-md-5">
+                <div *ngFor="let item of parisForecast.list" class="france-item">
+                    <div class="d-flex">
+                        <div class="icon">
+                            <img [src]="'http://openweathermap.org/img/wn/' + (item.weather[0].icon) + '.png'">
+                        </div>
+                        <div class="temp d-flex align-items-center justify-content-center">
+                            <div class="number">
+                                {{item.main.temp}}&#8451;
+                            </div>
+                            <div>
+                                <p class="mt-0 mb-1">{{parisForecast.city.name}}</p>
+                                <p class="my-0 text-14">France</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mx-0 humidity">
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            Humidity {{item.main.humidity}}%
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            Wind
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            {{item.wind.speed}}km/h
+                        </div>
+                    </div>
+                </div>
+                <div class="add-location">
+                    <button>
+                        Add Locations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    width: var(--icon-size);
+    --fill: var(--purple);
+    transition: all 500ms;
+    .primary {
+        fill: var(--fill) !important;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
